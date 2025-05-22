@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <title>Hinggi.id</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <link href="/img/favicon.ico" rel="icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar -->
+    <div id="topbar-placeholder"></div>
+    <script>
+        fetch('/views/partials/admin/topbar.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('topbar-placeholder').innerHTML = data;
+            });
+    </script>
+
+    <!-- Layout Row: Sidebar + Konten -->
+    <div class="container-fluid">
+        <div class="row border-top px-xl-5" id="admin-layout">
+            <!-- Sidebar akan dimuat di sini -->
+        </div>
+    </div>
+
+    <script>
+        // Fungsi load konten halaman dinamis
+        function loadPage(page) {
+            const container = document.querySelector('#dashboard-placeholder');
+            if (container) {
+                fetch('./admin/' + page)
+                    .then(res => res.text())
+                    .then(data => {
+                        container.innerHTML = data;
+                    });
+            }
+        }
+
+        // Muat navbar/sidebar dan kolom konten
+        fetch('/views/partials/admin/navbar.html')
+            .then(res => res.text())
+            .then(navbar => {
+                document.getElementById('admin-layout').innerHTML = navbar;
+
+                // Tambahkan kolom konten utama
+                const contentCol = document.createElement('div');
+                contentCol.className = 'col-lg-9';
+                contentCol.innerHTML = '<div id="dashboard-placeholder"></div>';
+                document.getElementById('admin-layout').appendChild(contentCol);
+
+                // Default: load dashboard
+                fetch('/views/admin/dashboard/dashboard.html')
+                    .then(res => res.text())
+                    .then(data => {
+                        document.getElementById('dashboard-placeholder').innerHTML = data;
+                    });
+            });
+    </script>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('/views/partials/admin/footer.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JS Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<div class="container-fluid py-4">
+    <h2 class="mb-4">Edit Profil Pengguna</h2>
+
+    <form>
+        <div class="form-group">
+            <label>Nama</label>
+            <input type="text" class="form-control" value="Ahmad Saputra">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" value="ahmad@example.com">
+        </div>
+
+        <div class="form-group">
+            <label>Telepon</label>
+            <input type="text" class="form-control" value="081234567890">
+        </div>
+
+        <div class="form-group">
+            <label>Alamat</label>
+            <textarea class="form-control">Jl. Raya Sumba No. 12, NTT</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3">
+            <i class="fa fa-save mr-1"></i> Simpan Perubahan
+        </button>
+        <button type="button" class="btn btn-secondary mt-3 ml-2" onclick="loadPage('../pages/pengguna/detail-pengguna.html')">
+            <i class="fa fa-arrow-left mr-1"></i> Batal
+        </button>
+    </form>
+</div>

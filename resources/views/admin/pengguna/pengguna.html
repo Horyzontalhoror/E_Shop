@@ -1,0 +1,62 @@
+<div class="container-fluid py-4">
+    <h2 class="mb-4">Manajemen Pengguna</h2>
+
+    <!-- Tabel Pengguna -->
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+            Daftar Pengguna
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Telepon</th>
+                            <th>Tanggal Daftar</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Ahmad Saputra</td>
+                            <td>ahmad@example.com</td>
+                            <td>081234567890</td>
+                            <td>01/04/2025</td>
+                            <td><span class="badge badge-success">Aktif</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-info" onclick="loadPage('../pages/pengguna/detail-pengguna.html')">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger" onclick="confirm('Blokir pengguna ini?')">
+                                    <i class="fa fa-ban"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Siti Aminah</td>
+                            <td>siti@example.com</td>
+                            <td>082233445566</td>
+                            <td>15/03/2025</td>
+                            <td><span class="badge badge-danger">Nonaktif</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-info" onclick="loadPage('../pages/pengguna/detail-pengguna.html')">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-success" onclick="confirm('Aktifkan kembali pengguna ini?')">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Tambahkan baris lainnya sesuai kebutuhan -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

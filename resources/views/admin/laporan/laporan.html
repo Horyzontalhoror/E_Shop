@@ -1,0 +1,71 @@
+<!-- laporan start -->
+<div class="container-fluid py-4">
+    <h2 class="mb-4">Laporan Penjualan</h2>
+
+    <!-- Filter Laporan -->
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label>Periode</label>
+            <input type="month" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label>Kategori</label>
+            <select class="form-control">
+                <option value="">Semua</option>
+                <option value="Baju">Baju</option>
+                <option value="Dress">Dress</option>
+                <option value="Jaket">Jaket</option>
+            </select>
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+            <button class="btn btn-primary w-100"><i class="fa fa-filter mr-1"></i> Tampilkan</button>
+        </div>
+    </div>
+
+    <!-- Tabel Laporan -->
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+            Ringkasan Penjualan
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Produk</th>
+                            <th>Kategori</th>
+                            <th>Jumlah Terjual</th>
+                            <th>Total Pendapatan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>04/05/2025</td>
+                            <td>Baju Tenun Etnik</td>
+                            <td>Baju</td>
+                            <td>5</td>
+                            <td>Rp 1.250.000</td>
+                        </tr>
+                        <tr>
+                            <td>03/05/2025</td>
+                            <td>Dress Sumba</td>
+                            <td>Dress</td>
+                            <td>3</td>
+                            <td>Rp 960.000</td>
+                        </tr>
+                        <tr>
+                            <td>02/05/2025</td>
+                            <td>Jaket Etnik</td>
+                            <td>Jaket</td>
+                            <td>2</td>
+                            <td>Rp 700.000</td>
+                        </tr>
+                        <!-- Tambahkan lebih banyak baris jika perlu -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- laporan end -->

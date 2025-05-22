@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hinggi.id - Masuk atau Daftar</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="/css/auth_style.css">
+</head>
+
+<body>
+    <div class="auth-box">
+        <div class="logo">Hinggi.id</div>
+        <div class="description">Silakan login atau daftar untuk mulai belanja</div>
+        <div id="auth-container"></div>
+    </div>
+
+    <script>
+        function loadForm(file) {
+            fetch(file)
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('auth-container').innerHTML = data;
+                })
+                .catch(err => {
+                    document.getElementById('auth-container').innerHTML =
+                        '<div class="alert alert-danger">Gagal memuat form.</div>';
+                });
+        }
+
+        // Tampilkan login saat halaman pertama dibuka
+        document.addEventListener("DOMContentLoaded", function () {
+            loadForm('../auth/login.html'); // sesuaikan path jika perlu
+        });
+    </script>
+
+    <!-- JS Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
