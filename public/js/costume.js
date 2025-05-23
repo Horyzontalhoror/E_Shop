@@ -130,3 +130,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// sidebar admin
+document.querySelectorAll('.custom-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelectorAll('.custom-nav-link').forEach(el => el.classList.remove('active'));
+        link.classList.add('active');
+    });
+});

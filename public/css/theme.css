@@ -1,0 +1,116 @@
+/* Default Theme (Light) */
+:root {
+    --color-bg: #ffffff;
+    --color-text: #212529;
+    --color-primary: #D19C97;
+    --color-secondary: #5c7e9c2c;
+    --color-accent: #d8a73c;
+    --color-danger: #dc3545;
+}
+
+/* Theme 1 */
+[data-theme="1"] {
+    --color-bg: #fffee6;
+    --color-text: #000000;
+    --color-primary: #70F8BA;
+    --color-secondary: #88BBBF;
+    --color-accent: #8F7DB5;
+    --color-danger: #DF4948;
+}
+
+/* Theme 2 */
+[data-theme="2"] {
+    --color-bg: #f0f0f0;
+    --color-text: #333333;
+    --color-primary: #8F7DB5;
+    --color-secondary: #88BBBF;
+    --color-accent: #8F7DB5;
+    --color-danger: #DF4948;
+}
+
+/* Theme 3 */
+[data-theme="3"] {
+    --color-bg: #1d1d2c4b;
+    --color-text: #e91e63;
+    --color-primary: #DF4948;
+    --color-secondary: #88BBBF;
+    --color-accent: #8F7DB5;
+    --color-danger: #DF4948;
+}
+
+/* Global Themed Elements */
+[data-theme] body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+[data-theme] .bg-white {
+    background-color: var(--color-bg) !important;
+    color: var(--color-text);
+}
+
+[data-theme] .bg-secondary {
+    background-color: var(--color-secondary) !important;
+    color: #ffffff;
+}
+
+[data-theme] .btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #000;
+}
+
+[data-theme] .btn-danger {
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+[data-theme] .btn-outline-primary {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+[data-theme] a {
+    color: var(--color-accent);
+}
+
+[data-theme] .card-header {
+    background-color: var(--color-secondary);
+    color: #fff;
+}
+
+[data-theme] .custom-nav-link {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+[data-theme] .custom-nav-link:hover {
+    background-color: var(--color-accent);
+    color: #fff;
+}
+
+/* Theme Switcher UI Styles */
+.btn-theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding: 13px;
+    font-size: 18px;
+}
+
+.theme-popup {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+    z-index: 1051;
+    width: 200px;
+}

@@ -35,7 +35,7 @@
         {{-- Menu kanan --}}
         <div class="navbar-nav ml-auto">
             <a href="{{ url('/login') }}" class="nav-item nav-link">Login</a>
-            <a href="{{ url('/admin/dashboard') }}" class="nav-item nav-link">Admin</a>
+            <a href="{{ url('/admin') }}" class="nav-item nav-link">Admin</a>
         </div>
     </div>
 </nav>

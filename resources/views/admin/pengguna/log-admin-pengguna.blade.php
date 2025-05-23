@@ -1,3 +1,8 @@
+@extends('layouts.admin')
+
+@section('title', 'Log Aktivitas Admin terhadap Pengguna')
+
+@section('content')
 <div class="container-fluid py-4">
     <h2 class="mb-4">Log Aktivitas Admin terhadap Pengguna</h2>
 
@@ -14,9 +19,10 @@
         </div>
     </div>
 
-    <div class="text-right mt-4">
-        <button class="btn btn-secondary" onclick="loadPage('../pages/pengguna/detail-pengguna.html')">
+    <div class="text-end mt-4">
+        <a href="{{ route('admin.pengguna.show', 1) }}" class="btn btn-secondary">
             <i class="fa fa-arrow-left mr-1"></i> Kembali
-        </button>
+        </a>
     </div>
 </div>
+@endsection
