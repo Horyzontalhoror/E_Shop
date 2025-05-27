@@ -31,10 +31,20 @@
 /* Theme 3 */
 [data-theme="3"] {
     --color-bg: #1d1d2c4b;
-    --color-text: #e91e63;
+    --color-text: #250d15;
     --color-primary: #DF4948;
     --color-secondary: #88BBBF;
     --color-accent: #8F7DB5;
+    --color-danger: #DF4948;
+}
+
+/* Theme 4 */
+[data-theme="4"] {
+    --color-bg: #ffebb9;
+    --color-text: #00112d;
+    --color-primary: #ffab7d;
+    --color-secondary: #57313e71;
+    --color-accent: #57313e;
     --color-danger: #DF4948;
 }
 
