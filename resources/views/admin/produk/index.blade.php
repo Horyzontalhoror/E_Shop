@@ -91,6 +91,14 @@
                     </div>
                     </div>
                 </div>
+                <script>
+                    $('#confirmDeleteModal').on('show.bs.modal', function (event) {
+                        const button = $(event.relatedTarget);
+                        const url = button.data('url');
+                        const form = $('#deleteForm');
+                        form.attr('action', url);
+                    });
+                </script>
                 </div>
             </div>
         </div>
