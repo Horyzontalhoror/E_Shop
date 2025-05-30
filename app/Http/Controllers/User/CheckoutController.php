@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-class Checkout extends Controller
+class CheckoutController extends Controller
 {
     //
 

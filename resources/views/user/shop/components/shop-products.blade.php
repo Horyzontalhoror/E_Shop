@@ -27,47 +27,36 @@
             </div>
         </div>
 
-        @for ($i = 1; $i <= 8; $i++)
-            <div class="col-6 col-sm-4 col-md-3 col-lg-custom pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="{{ asset('img/product-' . $i . '.jpg') }}" alt="Product {{ $i }}">
+        @foreach ($produks as $produk)
+        <div class="col-6 col-sm-4 col-md-3 col-lg-custom pb-1">
+            <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_produk }}">
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">{{ $produk->nama_produk }}</h6>
+                    <div class="d-flex justify-content-center">
+                        <h6>{{ rupiah($produk->harga) }}</h6>
                     </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>Rp123.00</h6><h6 class="text-muted ml-2">
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="#" class="btn btn-sm text-dark p-0">
-                            <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
+                </div>
+                <div class="card-footer bg-light border text-center">
+                    <div class="btn-group d-flex" role="group">
+                        <a href="#" class="btn btn-sm btn-outline-danger w-50">
+                            <i class="fas fa-heart mr-1"></i> Wishlist
+                        </a>
+                        <a href="#" class="btn btn-sm btn-outline-primary w-50">
+                            <i class="fas fa-shopping-cart mr-1"></i> Tambah
+                        </a>
+                        <a href="{{ route('user.produk.show', $produk->slug) }}" class="btn btn-sm btn-outline-primary w-50">
+                            <i class="fas fa-search mr-1"></i> Detail
                         </a>
                     </div>
                 </div>
             </div>
-        @endfor
-
+        </div>
+        @endforeach
         <div class="col-12 pb-1">
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center mb-3">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            {{ $produks->links() }}
         </div>
     </div>
 </div>

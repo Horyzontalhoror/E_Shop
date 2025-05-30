@@ -1,4 +1,3 @@
-<!-- resources/views/admin/produk/edit.blade.php -->
 @extends('layouts.admin')
 
 @section('title', 'Edit Produk')
@@ -7,37 +6,52 @@
 <div class="container-fluid py-4">
     <h2 class="mb-4">Edit Produk</h2>
 
-    <form action="{{''}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.produk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <div class="form-group">
             <label>Nama Produk</label>
-            <input type="text" name="nama" class="form-control" value="Baju Tenun Etnik">
+            <input type="text" name="nama" class="form-control" value="{{ old('nama', $produk->nama_produk) }}" required>
         </div>
 
         <div class="form-group">
             <label>Kategori</label>
-            <select name="kategori" class="form-control">
-                <option value="Baju" selected>Baju</option>
-                <option value="Dress">Dress</option>
-                <option value="Jaket">Jaket</option>
-                <option value="Tas">Tas</option>
+            <select name="kategori_id" class="form-control" required>
+                @foreach ($kategoris as $kategori)
+                    <option value="{{ $kategori->id }}" {{ $produk->kategori_id == $kategori->id ? 'selected' : '' }}>
+                        {{ $kategori->nama_kategori }}
+                    </option>
+                @endforeach
             </select>
         </div>
 
         <div class="form-group">
             <label>Harga</label>
-            <input type="number" name="harga" class="form-control" value="250000">
+            <input type="text" id="harga_display" class="form-control" value="{{ $produk->harga }}">
+            <input type="hidden" name="harga" id="harga" value="{{ $produk->harga }}">
         </div>
 
         <div class="form-group">
             <label>Stok</label>
-            <input type="number" name="stok" class="form-control" value="12">
+            <input type="number" name="stok" class="form-control" value="{{ old('stok', $produk->stok) }}" required>
         </div>
 
         <div class="form-group">
-            <label>Gambar Produk</label>
+            <label>Deskripsi Produk</label>
+            <textarea name="deskripsi" class="form-control" rows="4" required>{{ old('deskripsi', $produk->deskripsi) }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Informasi Produk</label>
+            <textarea name="informasi" class="form-control" rows="3">{{ old('informasi', $produk->informasi) }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Gambar Produk</label><br>
+            @if ($produk->gambar)
+                <img src="{{ asset('storage/' . $produk->gambar) }}" alt="produk" class="img-thumbnail mb-2" style="width: 100px;">
+            @endif
             <input type="file" name="gambar" class="form-control-file">
         </div>
 
@@ -50,3 +64,8 @@
     </form>
 </div>
 @endsection
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
+@endpush

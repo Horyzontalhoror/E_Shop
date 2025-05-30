@@ -138,3 +138,34 @@ document.querySelectorAll('.custom-nav-link').forEach(link => {
         link.classList.add('active');
     });
 });
+
+// Fungsi format harga pakai Cleave.js
+document.addEventListener('DOMContentLoaded', function () {
+    const hargaDisplay = document.getElementById('harga_display');
+    const hargaHidden = document.getElementById('harga');
+
+    if (hargaDisplay && hargaHidden) {
+        const cleave = new Cleave(hargaDisplay, {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand',
+            prefix: 'Rp',
+            noImmediatePrefix: false,
+            rawValueTrimPrefix: true,
+            numeralPositiveOnly: true,
+        });
+
+        hargaDisplay.addEventListener('input', function () {
+            hargaHidden.value = cleave.getRawValue();
+        });
+    }
+});
+
+// Konfirmasi hapus produk dengan modal Bootstrap
+document.addEventListener('DOMContentLoaded', function () {
+    $('#confirmDeleteModal').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget);
+        const form = $('#deleteForm');
+        const action = button.data('url');
+        form.attr('action', action);
+    });
+});

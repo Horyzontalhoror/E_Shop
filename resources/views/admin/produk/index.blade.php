@@ -27,53 +27,71 @@
                             <th>Nama Produk</th>
                             <th>Kategori</th>
                             <th>Harga</th>
+                            <th>Deskripsi</th>
+                            <th>Informasi</th>
                             <th>Stok</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
+                    @foreach ($produks as $produk)
                         <tr>
-                            <td>1</td>
-                            <td><img src="/img/Kristina Hara Tola/img-11.png" alt="produk" class="img-thumbnail" style="width: 60px;"></td>
-                            <td><a href="{{ route('admin.produk.edit', 1) }}" class="text-decoration-none fw-bold">Baju Tenun Etnik</a></td>
-                            <td>Baju</td>
-                            <td><strong>Rp 250.000</strong></td>
-                            <td>12</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>
-                                <a href="{{ route('admin.produk.edit', 1) }}" class="btn btn-sm btn-warning">
+                                <img src="{{ asset('storage/' . $produk->gambar) }}" alt="produk" class="img-thumbnail" style="width: 60px;">
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.produk.edit', $produk->id) }}" class="text-decoration-none fw-bold">
+                                    {{ $produk->nama_produk }}
+                                </a>
+                            </td>
+                            <td>{{ $produk->kategori->nama_kategori ?? '-' }}</td>
+                            <td><strong>{{ rupiah($produk->harga) }}</strong></td>
+                            <td class="text-left" style="max-width: 250px;">{{ Str::limit($produk->deskripsi, 100) }}</td>
+                            <td class="text-left" style="max-width: 200px;">{{ Str::limit($produk->informasi, 100) }}</td>
+                            <td>{{ $produk->stok }}</td>
+                            <td>
+                                <a href="{{ route('admin.produk.edit', $produk->id) }}" class="btn btn-sm btn-warning">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <form action="{{ route('admin.produk.destroy', 1) }}" method="POST" class="d-inline">
+                                <form action="{{ route('admin.produk.destroy', $produk->id) }}" method="POST" class="d-inline">
                                     @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus produk ini?')">
+                                    <button type="button" class="btn btn-sm btn-danger"
+                                        data-toggle="modal"
+                                        data-target="#confirmDeleteModal"
+                                        data-url="{{ route('admin.produk.destroy', $produk->id) }}">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </form>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><img src="/img/Kristina Hara Tola/img-18.jpg" alt="produk" class="img-thumbnail" style="width: 60px;"></td>
-                            <td><a href="{{ route('admin.produk.edit', 2) }}" class="text-decoration-none fw-bold">Dress Sumba</a></td>
-                            <td>Dress</td>
-                            <td><strong>Rp 320.000</strong></td>
-                            <td>8</td>
-                            <td>
-                                <a href="{{ route('admin.produk.edit', 2) }}" class="btn btn-sm btn-warning">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <form action="{{ route('admin.produk.destroy', 2) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus produk ini?')">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
+                <!-- Modal Konfirmasi Hapus -->
+                <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content border-danger">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Tutup">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Apakah Anda yakin ingin menghapus <strong>produk</strong> ini? Tindakan ini tidak dapat dibatalkan.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <form method="POST" id="deleteForm">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
     </div>

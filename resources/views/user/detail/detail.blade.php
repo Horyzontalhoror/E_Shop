@@ -16,7 +16,7 @@
     </div>
 
     {{-- Shop Detail --}}
-    @include('user.detail.components.product-detail')
+    @include('user.detail.components.product-detail', ['produk' => $produk])
 
     {{-- deskripsi produk --}}
     @include('user.detail.components.product-description')

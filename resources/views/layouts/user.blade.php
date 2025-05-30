@@ -9,7 +9,7 @@
     <meta name="description" content="Hinggi.id - Platform belanja kain tenun Sumba berkualitas langsung dari pengrajin.">
 
     <!-- Favicon -->
-    <link href="{{ asset('img/favicon.ico') }}" rel="icon">
+    <link href="{{ asset('img/logo.png') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -37,9 +37,6 @@
     {{-- Navbar dan Konten --}}
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-5">
-            {{-- <div class="col-lg-2 d-none d-lg-block">
-                @include('partials.user.navbar-vertical')
-            </div> --}}
             <div class="col-12">
                 @include('partials.user.navbar-horizontal')
 
@@ -61,6 +58,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 
     <!-- Contact Javascript File -->
     <script src="{{ asset('mail/jqBootstrapValidation.min.js') }}"></script>

@@ -72,11 +72,6 @@
             </div>
         </div>
     </div>
-        {{-- deskripsi produk --}}
-    @include('user.detail.components.product-description')
-
-    {{-- Related Products --}}
-    @include('user.detail.components.related-products')
 </div>
 <!-- Shop Detail End -->
 @endsection

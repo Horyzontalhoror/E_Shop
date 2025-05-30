@@ -21,64 +21,71 @@
                 <thead class="table-light text-center">
                     <tr>
                         <th>#</th>
+                        <th>Gambar</th>
                         <th>Nama Kategori</th>
                         <th>Stok</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                @foreach($kategoris as $kategori)
                     <tr>
-                        <td>1</td>
-                        <td><a href="{{ route('admin.kategori.edit', 1) }}" class="fw-bold text-decoration-none">Kain</a></td>
-                        <td>24</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>
-                            <a href="{{ route('admin.kategori.edit', 1) }}" class="btn btn-sm btn-warning">
-                                <i class="fa fa-edit"></i>
+                            <img src="{{ asset('storage/' . $kategori->gambar) }}" alt="produk" class="img-thumbnail" style="width: 60px;">
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.kategori.edit', $kategori->id) }}" class="fw-bold text-decoration-none">
+                                {{ $kategori->nama_kategori }}
                             </a>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><a href="{{ route('admin.kategori.edit', 2) }}" class="fw-bold text-decoration-none">Baju</a></td>
-                        <td>15</td>
+
+                        <td>{{ $kategori->stock }}</td>
+
                         <td>
-                            <a href="{{ route('admin.kategori.edit', 2) }}" class="btn btn-sm btn-warning">
+                            <a href="{{ route('admin.kategori.edit', $kategori->id) }}" class="btn btn-sm btn-warning">
                                 <i class="fa fa-edit"></i>
                             </a>
+                            <form action="{{ route('admin.kategori.destroy', $kategori->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus kategori ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button"
+                                    class="btn btn-sm btn-danger"
+                                    data-toggle="modal"
+                                    data-target="#confirmDeleteModal"
+                                    data-url="{{ route('admin.kategori.destroy', $kategori->id) }}">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><a href="{{ route('admin.kategori.edit', 3) }}" class="fw-bold text-decoration-none">Dress</a></td>
-                        <td>25</td>
-                        <td>
-                            <a href="{{ route('admin.kategori.edit', 3) }}" class="btn btn-sm btn-warning">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><a href="{{ route('admin.kategori.edit', 4) }}" class="fw-bold text-decoration-none">Jaket</a></td>
-                        <td>45</td>
-                        <td>
-                            <a href="{{ route('admin.kategori.edit', 4) }}" class="btn btn-sm btn-warning">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td><a href="{{ route('admin.kategori.edit', 5) }}" class="fw-bold text-decoration-none">Tas</a></td>
-                        <td>5</td>
-                        <td>
-                            <a href="{{ route('admin.kategori.edit', 5) }}" class="btn btn-sm btn-warning">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
+                @endforeach
                 </tbody>
             </table>
+            <!-- Modal Konfirmasi Hapus -->
+            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content border-danger">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Tutup">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda yakin ingin menghapus <strong>Kategori</strong> ini? Tindakan ini tidak dapat dibatalkan.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <form method="POST" id="deleteForm">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
 </div>

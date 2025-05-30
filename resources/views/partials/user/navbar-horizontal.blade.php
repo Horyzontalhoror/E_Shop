@@ -19,17 +19,17 @@
 
         {{-- Menu utama --}}
         <div class="navbar-nav">
-            <a href="{{ url('/') }}" class="nav-item nav-link">Home</a>
-            <a href="{{ url('/shop') }}" class="nav-item nav-link">Shop</a>
-            <a href="{{ url('/detail') }}" class="nav-item nav-link">Detail</a>
+            <a href="{{ route('user.home') }}" class="nav-item nav-link">Home</a>
+            <a href="{{ route('user.shop') }}" class="nav-item nav-link">Shop</a>
+            {{-- <a href="{{ route('user.detail') }}" class="nav-item nav-link">Detail</a> --}}
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    <a href="{{ url('/cart') }}" class="dropdown-item">Shopping Cart</a>
-                    <a href="{{ url('/checkout') }}" class="dropdown-item">Checkout</a>
+                    <a href="{{ route('user.cart') }}" class="dropdown-item">Shopping Cart</a>
+                    <a href="{{ route('user.checkout') }}" class="dropdown-item">Checkout</a>
                 </div>
             </div>
-            <a href="{{ url('/contact') }}" class="nav-item nav-link">Contact</a>
+            <a href="{{ route('user.contact') }}" class="nav-item nav-link">Contact</a>
         </div>
 
         {{-- Menu kanan --}}

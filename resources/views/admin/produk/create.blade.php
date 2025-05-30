@@ -11,28 +11,43 @@
 
         <div class="form-group">
             <label>Nama Produk</label>
-            <input type="text" name="nama" class="form-control" placeholder="Masukkan nama produk">
+            <input type="text" name="nama" class="form-control" value="{{ old('nama') }}" required>
+            @error('nama')
+                <div class="text-danger small">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="form-group">
             <label>Kategori</label>
-            <select name="kategori" class="form-control">
+            <select name="kategori_id" class="form-control" required>
                 <option value="">Pilih Kategori</option>
-                <option value="Baju">Baju</option>
-                <option value="Dress">Dress</option>
-                <option value="Jaket">Jaket</option>
-                <option value="Tas">Tas</option>
+                @foreach ($kategoris as $kategori)
+                    <option value="{{ $kategori->id }}" {{ old('kategori_id') == $kategori->id ? 'selected' : '' }}>
+                        {{ $kategori->nama_kategori }}
+                    </option>
+                @endforeach
             </select>
         </div>
 
         <div class="form-group">
             <label>Harga</label>
-            <input type="number" name="harga" class="form-control" placeholder="Contoh: 250000">
+            <input type="text" id="harga_display" class="form-control">
+            <input type="hidden" name="harga" id="harga" value="{{ old('harga') }}">
+        </div>
+
+        <div class="form-group">
+            <label>Deskripsi Produk</label>
+            <textarea name="deskripsi" class="form-control" rows="4" placeholder="Tuliskan deskripsi singkat produk..." required>{{ old('deskripsi') }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Informasi Produk</label>
+            <textarea name="informasi" class="form-control" rows="3" placeholder="Contoh: Bahan katun, Ukuran all size, dll.">{{ old('informasi') }}</textarea>
         </div>
 
         <div class="form-group">
             <label>Stok</label>
-            <input type="number" name="stok" class="form-control" placeholder="Jumlah stok tersedia">
+            <input type="number" name="stok" class="form-control" placeholder="Jumlah stok tersedia" value="{{ old('stok') }}" required>
         </div>
 
         <div class="form-group">
@@ -48,4 +63,9 @@
         </a>
     </form>
 </div>
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
+@endpush
+
 @endsection

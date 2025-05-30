@@ -210,3 +210,12 @@
 .custom-sidebar .custom-nav-link i {
     width: 20px;
 }
+
+/* atur ulang ukuran gambar */
+.product-img-fixed {
+    width: 100%;
+    height: 200px; /* Sesuaikan tinggi yang kamu inginkan */
+    object-fit: cover;
+    background-color: #f9f9f9;
+    display: block;
+}

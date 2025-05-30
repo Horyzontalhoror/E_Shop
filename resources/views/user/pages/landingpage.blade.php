@@ -43,8 +43,8 @@
     @include('user.pages.components.featured')
     @include('user.pages.components.categories')
     @include('user.pages.components.offer')
-    @include('user.pages.components.popular-products')
-    @include('user.pages.components.subscribe')
+    {{-- @include('user.pages.components.popular-products') --}}
     @include('user.pages.components.latest-products')
+    @include('user.pages.components.subscribe')
     @include('user.pages.components.vendors')
 @endsection
