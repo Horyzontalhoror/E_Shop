@@ -54,15 +54,19 @@ class ProdukController extends Controller
             $file = $request->file('gambar');
             $namaFile = uniqid() . '.' . $file->getClientOriginalExtension();
 
+            $folder = public_path('storage/produk');
+            if (!file_exists($folder)) {
+                mkdir($folder, 0755, true); // ✅ pastikan folder ada
+            }
+
             $manager = new ImageManager(new GdDriver());
 
-            // Resize proporsional tanpa crop (maksimal lebar 800px)
             $image = $manager->read($file)->resize(800, null, function ($constraint) {
-                $constraint->aspectRatio(); // jaga rasio asli
-                $constraint->upsize(); // jangan perbesar gambar kecil
+                $constraint->aspectRatio();
+                $constraint->upsize();
             });
 
-            $image->save(public_path('storage/produk/' . $namaFile));
+            $image->save($folder . '/' . $namaFile); // ✅ simpan di tempat yang benar
 
             $gambarPath = 'produk/' . $namaFile;
         }
