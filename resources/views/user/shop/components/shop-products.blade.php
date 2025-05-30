@@ -42,13 +42,13 @@
                 <div class="card-footer bg-light border text-center">
                     <div class="btn-group d-flex" role="group">
                         <a href="#" class="btn btn-sm btn-outline-danger w-50">
-                            <i class="fas fa-heart mr-1"></i> Wishlist
+                            <i class="fas fa-heart mr-1"></i>
                         </a>
                         <a href="#" class="btn btn-sm btn-outline-primary w-50">
-                            <i class="fas fa-shopping-cart mr-1"></i> Tambah
+                            <i class="fas fa-shopping-cart mr-1"></i>
                         </a>
                         <a href="{{ route('user.produk.show', $produk->slug) }}" class="btn btn-sm btn-outline-primary w-50">
-                            <i class="fas fa-search mr-1"></i> Detail
+                            <i class="fas fa-search mr-1"></i>
                         </a>
                     </div>
                 </div>

@@ -50,7 +50,7 @@
                     <input type="text" class="form-control text-center bg-light border" value="1">
                     <button class="btn btn-outline-secondary btn-sm btn-plus" type="button"><i class="fa fa-plus"></i></button>
                 </div>
-                <button class="btn btn-primary px-4"><i class="fa fa-shopping-cart me-2"></i>Tambah ke Keranjang</button>
+                <button class="btn btn-primary px-4"><i class="fa fa-shopping-cart me-2"></i>Keranjang</button>
             </div>
 
             <!-- Info Tambahan -->
