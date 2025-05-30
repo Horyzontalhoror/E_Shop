@@ -33,7 +33,14 @@ class ProdukController extends Controller
     public function show($slug)
     {
         $produk = Produk::where('slug', $slug)->firstOrFail();
-        return view('user.detail.detail', compact('produk'));
+
+        $produk_terkait = Produk::where('kategori_id', $produk->kategori_id)
+            ->where('id', '!=', $produk->id)
+            ->inRandomOrder()
+            ->take(5)
+            ->get();
+
+        return view('user.detail.detail', compact('produk', 'produk_terkait'));
     }
 
 }

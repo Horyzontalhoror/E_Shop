@@ -53,14 +53,6 @@
                 <button class="btn btn-primary px-4"><i class="fa fa-shopping-cart me-2"></i>Keranjang</button>
             </div>
 
-            <!-- Info Tambahan -->
-            @if ($produk->informasi)
-                <div class="mt-3">
-                    <h6 class="text-uppercase font-weight-bold">Informasi Tambahan</h6>
-                    <p class="mb-0">{{ $produk->informasi }}</p>
-                </div>
-            @endif
-
             <!-- Share -->
             <div class="d-flex align-items-center mt-4">
                 <span class="text-dark fw-medium me-2">Bagikan:</span>
